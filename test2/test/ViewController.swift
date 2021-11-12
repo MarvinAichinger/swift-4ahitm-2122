@@ -1,9 +1,3 @@
-//
-//  ViewController.swift
-//  test
-//
-//  Created by Holzer Teresa on 17.09.21.
-//
 
 import UIKit
 
@@ -17,30 +11,20 @@ class ViewController: UIViewController {
     @IBOutlet weak var buttonGuess: UIButton!
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        model.numberToGuess = Int(arc4random_uniform(100));
-        label.text = "Try to guess the number!"
+        model.numberToGuess = Int(arc4random_uniform(100))
+        label.text = "Try to guess the number! :)"
         
         print(model.numberToGuess)
     }
     
     @IBAction func onChangeTextField(_ sender: UITextField) {
-        if(model.isValid(guess: Int(textField.text!))){
-        buttonGuess.isEnabled = true;
-        } else {
-            buttonGuess.isEnabled = false
-        }
+        buttonGuess.isEnabled = model.isValid(guess: Int(textField.text!))
     }
     
     @IBAction func onclick(_ sender: UIButton) {
-        // Check for input not nill
-        //if(checkNumber()){
-            
-        //}
-        
-        model.counterOfTrys+=1
+        model.counterOfTrys += 1
     }
     
     func compare(guessedString: String) -> Int! {
@@ -49,27 +33,25 @@ class ViewController: UIViewController {
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        if(checkNumber()){
+        if(checkNumber()) {
             return true
         }
-        print("no")
         return false
     }
     
-    func checkNumber() -> Bool{
+    func checkNumber() -> Bool {
         if(Optional(guessedNumber) != nil){
-            print("")
             guessedNumber = compare(guessedString: textField.text!)
             
             let text: String?
             
             switch guessedNumber{
             case -1:
-                text = "Your number is to low"
+                text = "Your number is too low!"
                 label.text = text
                 return false
             case 1:
-                text = "Your number is too high"
+                text = "Your number is too high!"
                 label.text = text
                 return false
             default:
@@ -77,12 +59,14 @@ class ViewController: UIViewController {
                 label.text = text
                 return true
             }
-            
-            
         }
         return false
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let resultViewController = segue.destination as? ResultViewController
+        resultViewController?.model = model
+    }
 
 }
 

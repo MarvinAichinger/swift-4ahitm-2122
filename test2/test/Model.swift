@@ -5,15 +5,14 @@ class Model{
     
     func compare(guess guessedNumber:Int!) -> Int! {
         var result = 0
-        counterOfTrys = counterOfTrys+1
   
-            if guessedNumber < numberToGuess {
-                result = -1
-            } else if guessedNumber > numberToGuess  {
-                result = 1
-            }
-        return result
+        if guessedNumber < numberToGuess {
+            result = -1
+        } else if guessedNumber > numberToGuess  {
+            result = 1
         }
+        return result
+    }
     
     func isValid(guess guessedNumber:Int!) -> Bool!{
         if(guessedNumber == nil){
@@ -24,5 +23,5 @@ class Model{
         }
         return false
     }
-    }
+}
 
