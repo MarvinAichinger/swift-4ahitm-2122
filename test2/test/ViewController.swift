@@ -3,20 +3,23 @@ import UIKit
 
 class ViewController: UIViewController {
     var model = Model()
-    var guessedNumber = 0
 
     
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var buttonGuess: UIButton!
+    @IBOutlet weak var buttonListGuesses: UIButton!
+    @IBOutlet weak var reloadButton: UIButton!
     
+    
+    @IBAction func onclickReload(_ sender: UIButton) {
+        print("reload")
+        reloadGame()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        model.numberToGuess = Int(arc4random_uniform(100))
-        label.text = "Try to guess the number! :)"
-        
-        print(model.numberToGuess)
+        reloadGame()
     }
     
     @IBAction func onChangeTextField(_ sender: UITextField) {
@@ -24,28 +27,33 @@ class ViewController: UIViewController {
     }
     
     @IBAction func onclick(_ sender: UIButton) {
-        model.counterOfTrys += 1
+        let guess = Int(textField.text!)!
+        model.addGuessedNumber(guess: guess)
     }
     
     func compare(guessedString: String) -> Int! {
+        buttonListGuesses.isEnabled = true;
+        
         let guess = Int(guessedString)!
         return model.compare(guess: guess)
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        if(checkNumber()) {
+        if (identifier == "listCurrTries") {
+            return true
+        }else if(checkNumber()) {
             return true
         }
         return false
     }
     
     func checkNumber() -> Bool {
-        if(Optional(guessedNumber) != nil){
-            guessedNumber = compare(guessedString: textField.text!)
+            
+            var compareResult = compare(guessedString: textField.text!)
             
             let text: String?
             
-            switch guessedNumber{
+            switch compareResult{
             case -1:
                 text = "Your number is too low!"
                 label.text = text
@@ -59,13 +67,22 @@ class ViewController: UIViewController {
                 label.text = text
                 return true
             }
-        }
         return false
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let resultViewController = segue.destination as? ResultViewController
+        let resultViewController = segue.destination as? TableViewController
         resultViewController?.model = model
+    }
+    
+    func reloadGame() {
+        model.numberToGuess = Int(arc4random_uniform(100))
+        model.attempt = [Int]()
+        label.text = "Try to guess the number! :)"
+        textField.text = ""
+        
+        print(model.numberToGuess)
+        buttonListGuesses.isEnabled = false;
     }
 
 }

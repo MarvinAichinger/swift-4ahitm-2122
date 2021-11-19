@@ -1,11 +1,14 @@
 class Model{
     var numberToGuess = 0
-    var counterOfTrys = 0
+    var attempt = [Int]()
     
+    func addGuessedNumber(guess guessedNumber:Int!) {
+        attempt.append(guessedNumber);
+    }
     
     func compare(guess guessedNumber:Int!) -> Int! {
         var result = 0
-  
+        
         if guessedNumber < numberToGuess {
             result = -1
         } else if guessedNumber > numberToGuess  {
