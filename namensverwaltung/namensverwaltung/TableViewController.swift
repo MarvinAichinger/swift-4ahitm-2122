@@ -38,7 +38,7 @@ class TableViewController: UITableViewController {
 
         // Configure the cell...
         cell.textLabel!.text = model!.nachnamen[indexPath.row]
-        
+        cell.detailTextLabel!.text = model!.vornamen[indexPath.row]
 
         return cell
     }
