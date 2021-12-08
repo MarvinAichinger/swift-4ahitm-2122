@@ -7,7 +7,7 @@
 
 import UIKit
 
-class Model: NSObject {
+class Model {
 
     var vornamen = [String]()
     var nachnamen = [String]()

@@ -13,6 +13,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var vornameTextField: UITextField!
     @IBOutlet weak var nachnameTextField: UITextField!
     
+    var model = Model()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -22,14 +24,20 @@ class ViewController: UIViewController {
     }
     
     @IBAction func onChangeNN(_ sender: UITextField) {
+        print("nn changed")
     }
     
     func updateButtonEnable() {
-        print("nn changed")
     }
     
     @IBAction func submitButtonClicked(_ sender: UIButton) {
         print("Button clicked")
+        model.add(vname: vornameTextField.text, nname: nachnameTextField.text)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let resultViewController = segue.destination as? TableViewController
+        resultViewController?.model = model
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
