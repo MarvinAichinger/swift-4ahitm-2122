@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iy1-v4-Irw">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="studyComments" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add new comment:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sCe-Ak-E8P">
+                                <rect key="frame" x="133" y="238" width="148" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="148" id="4OV-jC-hVf"/>
+                                    <constraint firstAttribute="height" constant="21" id="fuC-XQ-7X4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MMJ-T9-LPA">
+                                <rect key="frame" x="81" y="276" width="252" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="Oyl-0H-KaA"/>
+                                    <constraint firstAttribute="width" constant="252" id="Qmz-kK-xIT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldChange:" destination="BYZ-38-t0r" eventType="editingChanged" id="jS9-6Z-eQ0"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uhl-0V-khT">
+                                <rect key="frame" x="105.5" y="318" width="203" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="URg-Kt-6C7"/>
+                                    <constraint firstAttribute="width" constant="203" id="X4K-cw-Xii"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="add comment"/>
+                                <connections>
+                                    <action selector="addCommentBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="m64-jL-i8W"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4xx-11-2Le">
+                                <rect key="frame" x="108" y="399" width="198" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="CM3-OP-IfM"/>
+                                    <constraint firstAttribute="width" constant="198" id="WXd-ad-xMb"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Show comments"/>
+                                <connections>
+                                    <segue destination="FGT-rd-HCa" kind="show" identifier="CommentSection" id="SG8-w8-fBI"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="sCe-Ak-E8P" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="FA4-MQ-GEX"/>
+                            <constraint firstItem="uhl-0V-khT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="HQ0-oX-0el"/>
+                            <constraint firstItem="MMJ-T9-LPA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ML1-Sx-XnK"/>
+                            <constraint firstItem="4xx-11-2Le" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="PA2-eL-A3X"/>
+                            <constraint firstItem="4xx-11-2Le" firstAttribute="top" secondItem="uhl-0V-khT" secondAttribute="bottom" constant="50" id="b5e-wY-8Hv"/>
+                            <constraint firstItem="MMJ-T9-LPA" firstAttribute="top" secondItem="sCe-Ak-E8P" secondAttribute="bottom" constant="17" id="lBw-M0-8HE"/>
+                            <constraint firstItem="uhl-0V-khT" firstAttribute="top" secondItem="MMJ-T9-LPA" secondAttribute="bottom" constant="8" symbolic="YES" id="mkG-ed-8KU"/>
+                            <constraint firstItem="sCe-Ak-E8P" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="150" id="t8e-vA-oKx"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="sV7-hy-cMd"/>
+                    <connections>
+                        <outlet property="addCommentBtn" destination="uhl-0V-khT" id="e95-It-Ofd"/>
+                        <outlet property="showCommentsBtn" destination="4xx-11-2Le" id="gL9-RK-wyX"/>
+                        <outlet property="textFieldBtn" destination="MMJ-T9-LPA" id="w4D-LW-YYd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="106" y="277"/>
+        </scene>
+        <!--Comment Section-->
+        <scene sceneID="2uc-TG-W8n">
+            <objects>
+                <tableViewController id="FGT-rd-HCa" customClass="CommentController" customModule="studyComments" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="ccp-cA-v7V">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="comment" textLabel="Kep-iZ-2yO" style="IBUITableViewCellStyleDefault" id="t0F-6u-eEs">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="t0F-6u-eEs" id="G2C-zw-uLd">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Kep-iZ-2yO">
+                                            <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="FGT-rd-HCa" id="kNk-Tq-q9K"/>
+                            <outlet property="delegate" destination="FGT-rd-HCa" id="MKI-6N-xQa"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Comment Section" id="XRA-vh-1Gc"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JTU-ae-tNl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1633" y="145"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="JOd-Eb-uyC">
+            <objects>
+                <navigationController id="iy1-v4-Irw" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xwp-HT-bvF">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="vfP-Sg-0Sv"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lmJ-LH-PAv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="341" y="-692"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
